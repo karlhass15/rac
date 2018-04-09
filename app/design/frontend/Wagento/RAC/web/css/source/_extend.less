@@ -1,0 +1,348 @@
+
+/* Company Colors */
+@company_color_black: #000000;
+@company_color_fuschia: #E03694;
+@company_color_white: #FFFFFF;
+@company_color_footer: #C6C6C6;
+
+
+@company_color_link_unvisited:  #000000;
+@company_color_link_visited:    #FF33CC;
+@company_color_link_hover:      #E03694;
+@company_color_link_active:     #FF3399;
+
+@copyright__background-color: @color-gray-middle4;
+
+// Common
+// (for styles used in both mobile and desktop views)
+& when (@media-common = true) {
+  body{
+    font-family: @font-family-name__cgr;
+    background: @company_color_white;
+    width:100%;
+    color: @company_color_black;
+    font-weight: bold;
+    a{
+      font-style:italic;
+      color: @company_color_link_unvisited;
+      //&:hover{
+      //  text-decoration: none;
+      //  color: @company_color_link_hover;
+      //}
+      //&:active{
+      //  color: @company_color_link_active;
+      //}
+      //&:visited{
+      //  color: @company_color_link_visited;
+      //}
+    }
+    text-transform: lowercase;
+    h1,h2,h3,h4,h5,h6 > *{
+      text-transform: uppercase;
+      span{
+        color: @company_color_fuschia;
+      }
+    }
+    h1 > *{
+      font-weight: bold;
+      background: @company_color_white;
+      color: @company_color_black;
+      margin: 10px 10px 10px 10px;
+      padding: 10px 10px 10px 10px;
+      text-decoration: none;
+    }
+    h2 > *{
+      font-family: @font-family-name__cgr;
+    }
+    h3 > *{
+      font-family: @font-family-name__cgb;
+    }
+    h4 > *{
+      font-family: @font-family-name__cgr;
+    }
+    h5 > *, h6 > *{
+      font-family: @font-family-name__cgb;
+    }
+    p{
+      font-family: @font-family-name__cgr;
+    }
+    form{
+      border: 1px solid;
+      padding: 10px 10px 10px 10px;
+      box-shadow: 1px 1px @company_color_black;
+      .control input, .control textarea{
+        background: @company_color_white;
+        border: 1px solid;
+        box-shadow: 1px 1px @company_color_black;
+        padding: 10px 10px 10px 10px;
+      }
+      .primary{
+        button.action {
+          background: @company_color_fuschia;
+          border: 1px @company_color_black;
+          padding: 10px 10px 10px 10px;
+          border-radius: 10px;
+          color: #C6C6C6;
+          font-weight: 100;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+  body{
+    &.catalog-product-view{
+      .page-title-wrapper span {
+        font-family: @font-family-name__cgb;
+      }
+      .product-info-price {
+        font-family: @font-family-name__cgr;
+        font-style: italic;
+      }
+      .product #product.info.description{
+        p{
+          font-family: @font-family-name__cgr;
+        }
+      }
+      .related{
+        .product{
+          a{
+            font-family: @font-family-name__cgb;
+            font-style: normal;
+          }
+          .price-box span{
+            font-family: @font-family-name__cgr;
+            font-style: italic;
+          }
+        }
+      }
+    }
+    &.page-products{
+      .product-item-info{
+        .product-item-link{
+          font-family: @font-family-name__cgr;
+        }
+        .price{
+          font-family: @font-family-name__cgr;
+          font-style: italic;
+        }
+      }
+    }
+  }
+  header{
+    font-family: @font-family-name__cgr;
+    font-style: normal;
+    text-transform: lowercase;
+    .header.content{
+      max-width: 1170px;
+    }
+    .block-minicart{
+      .minicart-items-wrapper{
+        .product-item-name a{
+          font-family: @font-family-name__cgr;
+          font-style: normal;
+        }
+        .product-item-pricing{
+          font-family: @font-family-name__cgb;
+          font-style: italic;
+        }
+      }
+    }
+  }
+  .sections{
+    background: @company_color_white;
+  }
+  footer{
+    width:100%;
+    &.page-footer{
+      background: @company_color_black;
+      .footer_links{
+        a{
+          color: @company_color_white;
+        }
+      }
+    }
+  }
+  header, footer{
+    color: @company_color_footer;
+    font-family: @font-family-name__cgr;
+    text-transform: lowercase;
+  }
+  body{
+    color: @company_color_black;
+    font-size:14px;
+  }
+  img {
+    width: 85px;
+    position: static;
+  }
+}
+
+// Mobile
+// (for all mobile styles.)
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  body {
+    p {
+      font-size: 10px;
+    }
+    h1 {
+      font-size: 40px;
+    }
+    form{
+      .primary{
+        button.action{
+          font-size:9px;
+        }
+      }
+    }
+  }
+  header, footer {
+    font-size: 18px;
+    font-weight: 300;
+    .navigation {
+      li {
+        font-size: 12px;
+      }
+    }
+  }
+  header {
+    height: 100px;
+  }
+  .navigation {
+    font-family: @font-family-name__cgb;
+    background: @company_color_white;
+    .level0 {
+      margin-right: 0;
+    }
+    ul {
+      .submenu {
+        background: #C6C6C6;
+        a > * {
+          color: @company_color_black;
+        }
+      }
+      .ui-menu-item > a {
+        font-style: normal;
+        color: @company_color_black;
+        font-size: 9px;
+        text-transform: uppercase;
+      }
+      a.level-top {
+        &:hover {
+          cursor: pointer;
+          background: @company_color_fuschia;
+          color: @company_color_white;
+        }
+      }
+    }
+  }
+  footer {
+    height: 300px;
+  }
+}
+// Tablet
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  body{
+    p{
+      font-size: 10px;
+    }
+    h1 > *{
+      font-size: 40px;
+    }
+    form{
+      .primary{
+        button.action{
+          font-size:9px;
+        }
+      }
+    }
+  }
+  header, footer{
+    font-size: 18px;
+    font-weight: 300;
+  }
+  header {
+    height: 100px;
+  }
+  .navigation{
+    background: @company_color_white;
+    font-family: @font-family-name__cgb;
+    .level0{
+      margin-right: 0;
+      & > .level-top, .submenu a{
+        color:@company_color_black;
+        font-style: normal;
+      }
+    }
+    li.level-top{
+      text-transform:uppercase;
+      font-size: 17px;
+      &:hover{
+        cursor:pointer;
+        background: @company_color_fuschia;
+        a.level-top{
+          color: @company_color_white;
+        }
+      }
+    }
+  }
+  footer{
+    height: 300px;
+  }
+  .navigation{
+    li{
+      font-size: 12px;
+    }
+  }
+}
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+  body{
+    p{
+      font-size: 14px;
+    }
+    h1 > *{
+      font-size: 50px;
+    }
+    form{
+      .primary{
+        button.action{
+          font-size:12px;
+        }
+      }
+    }
+  }
+  header {
+    height: 116px;
+  }
+  .navigation{
+    background: @company_color_white;
+    font-family: @font-family-name__cgb;
+    .level0{
+      margin-right: 0;
+      & > .level-top, .submenu a{
+        color:@company_color_black;
+        font-style: normal;
+      }
+    }
+    li.level-top{
+      text-transform:uppercase;
+      font-size: 17px;
+      font-weight: bold;
+      &:hover{
+        cursor:pointer;
+        background: @company_color_fuschia;
+        a.level-top{
+          color: @company_color_white;
+        }
+      }
+    }
+  }
+  footer{
+    height: 347px;
+  }
+  header, footer{
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

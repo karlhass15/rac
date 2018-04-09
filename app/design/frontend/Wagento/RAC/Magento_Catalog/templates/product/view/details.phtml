@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php
+                // reorder tabs according to priority
+                $reorderedDetailedInfoGroup = array();
+                foreach ($detailedInfoGroup as $name) {
+                    $alias = $layout->getElementAlias($name);
+                    $priority = $block->getChildData($alias, 'priority') ? $block->getChildData($alias, 'priority') : null;
+                    $reorderedDetailedInfoGroup[(int)$priority] = $name;
+                }
+                ksort($reorderedDetailedInfoGroup);
+            ?>
+            <?php foreach ($reorderedDetailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="data item title"
+                     aria-labeledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                     data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endforeach;?>
+        </div>
+    </div>
+<?php endif; ?>

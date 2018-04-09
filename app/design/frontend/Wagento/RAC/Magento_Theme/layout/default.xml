@@ -1,0 +1,20 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/grandecosmetics.png</argument>
+                <argument name="logo_img_width" xsi:type="number">300</argument>
+                <argument name="logo_img_height" xsi:type="number">300</argument>
+            </arguments>
+        </referenceBlock>
+
+        <!--<move element="navigation.sections" destination="top-bar"/>-->
+
+        <container name="top-bar" as="topBar" label="top-bar" htmlTag="div" htmlClass="top-bar"/>
+        <move element="top-bar" destination="header-wrapper" after="header-wrapper"/>
+
+        <referenceBlock name="header.panel.wrapper" remove="true"/>
+        <referenceBlock name="top.search" remove="true"/>
+        <!--<referenceBlock name="minicart" remove="true"/>-->
+    </body>
+</page>
